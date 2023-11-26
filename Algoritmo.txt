@@ -1,0 +1,13 @@
+abre o programa
+seleciona a tiragem
+
+tiragem 1
+tiragem 2
+tiragem 3
+
+seleciona se vai ser só arcanos maiores ou só arcanos menores
+
+input(pergunta ou intenção, pra energizar o software)
+
+roda o script
+faz a interpretação
