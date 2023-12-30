@@ -1,4 +1,21 @@
 import random
+from tkinter import *
+
+root = Tk()
+
+class Application():
+    def __init__(self):
+        self.root = root
+        self.tela()
+        root.mainloop()
+    def tela(self):
+        self.root.title("MIKROKOSMOS TAROT")
+        self.root.geometry('1080x700')
+        self.root.resizable(True, True)
+        self.root.maxsize(width= 1360, height= 768)
+        self.root.minsize(width= 800, height= 600)
+
+Application()
 
 arcanosMaiores = [
     'O Louco',
@@ -24,45 +41,77 @@ arcanosMaiores = [
     'O Julgamento',
     'O Mundo'
 ]
+arcanosMenores = [
+    'Ás de Copas',
+    'Ás de Ouros',
+    'Ás de Paus',
+    'Ás de Espadas',
+    'Rei de Copas',
+    'Rei de Ouros',
+    'Rei de Paus',
+    'Rei de Espadas',
+    'Dama de Copas',
+    'Dama de Ouros',
+    'Dama de Paus',
+    'Dama de Espadas',
+    'Valete de Copas',
+    'Valete de Ouros',
+    'Valete de Paus',
+    'Valete de Espadas',
+    '1 de Copas',
+    '1 de Ouros',
+    '1 de Paus',
+    '1 de Espadas',
+    '2 de Copas',
+    '2 de Ouros',
+    '2 de Paus',
+    '2 de Espadas',
+    '3 de Copas',
+    '3 de Ouros',
+    '3 de Paus',
+    '3 de Espadas',
+    '4 de Copas',
+    '4 de Ouros',
+    '4 de Paus',
+    '4 de Espadas',
+    '5 de Copas',
+    '5 de Ouros',
+    '5 de Paus',
+    '5 de Espadas',
+    '6 de Copas',
+    '6 de Ouros',
+    '6 de Paus',
+    '6 de Espadas',
+    '7 de Copas',
+    '7 de Ouros',
+    '7 de Paus',
+    '7 de Espadas',
+    '8 de Copas',
+    '8 de Ouros',
+    '8 de Paus',
+    '8 de Espadas',
+    '9 de Copas',
+    '9 de Ouros',
+    '9 de Paus',
+    '9 de Espadas',
+    '10 de Copas',
+    '10 de Ouros',
+    '10 de Paus',
+    '10 de Espadas',
+]
 
-while True:
-    print('==============================================')
-    print('=====|Bem vindo ao Oráculo Mikrokosmos|=======')
-    print('==============================================')
+def tiragemComposta(numero_cartas):
+    cartas_aleatorias = random.sample(arcanosMaiores, numero_cartas)
+    return cartas_aleatorias
+total_posicoes = 7
+cartas_por_posicao = [3, 1, 3]
 
-    print('Selecione o tipo de tiragem: ')
-    print('1 - Tiragem única')
-    print('2 - Tiragem Multipla')
-    print('3 - Sair')
+tiragem = []
 
-    intencoes = {}
-
-    def tiragemUnica():
-        carta_aleatoria = random.choice(arcanosMaiores)
-        return carta_aleatoria
-
-    def tiragemComposta(numero_cartas):
-        cartas_aleatorias = random.sample(arcanosMaiores, numero_cartas)
-        return cartas_aleatorias
-
-    tiragem = int(input())
-
-    if tiragem == 1:
-        intencao = input('Digite a pergunta do consulente: ')
-        resultado_tiragem = tiragemUnica()
-        print(resultado_tiragem)
-        intencoes[intencao] = resultado_tiragem
-
-    elif tiragem == 2:
-        intencao = input('Digite a pergunta do consulente: ')
-        print('Digite o número de cartas a serem tiradas: ')
-        numero_cartas = int(input())
+def templo():
+    for numero_cartas in cartas_por_posicao:
         resultado_tiragem = tiragemComposta(numero_cartas)
-        print(resultado_tiragem)
-        intencoes[intencao] = resultado_tiragem
+        tiragem.extend(resultado_tiragem)
+        print(tiragem)
 
-    else:
-        print('Obrigado pela consulta')
-        break
-
-print("Dicionário de Intenções:", intencoes)
+templo()
