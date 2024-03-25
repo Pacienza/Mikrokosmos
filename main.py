@@ -19,20 +19,24 @@ arcanosMaiores = [
 resultado_label = ttk.Label(root, text="", bootstyle=LIGHT)
 resultado_label.pack(pady=10)
 
+def tiragemComposta(numero_cartas):
+    cartas_aleatorias = random.sample(arcanosMaiores, numero_cartas)
+    return cartas_aleatorias
+
 def templo():
     numero_cartas = 7
-    cartas_aleatorias = random.sample(arcanosMaiores, numero_cartas)
-    resultado_label.config(text=cartas_aleatorias)
+    resultado_tiragem = tiragemComposta(numero_cartas)
+    resultado_label.config(text=resultado_tiragem)
 
 def peladan():
     numero_cartas = 5
-    cartas_aleatorias = random.sample(arcanosMaiores, numero_cartas)
-    resultado_label.config(text=cartas_aleatorias)
-
+    resultado_tiragem = tiragemComposta(numero_cartas)
+    resultado_label.config(text=resultado_tiragem)
 def avulso():
     carta_aleatoria = random.choice(arcanosMaiores)
     resultado_label.config(text=carta_aleatoria)
     return carta_aleatoria
+
 
 # Correção: passa a função sem os parênteses
 b1 = ttk.Button(root, text="Templo de Afrodite", bootstyle=LIGHT, command=templo)
