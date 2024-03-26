@@ -41,7 +41,7 @@ arcanosMaiores = {
     'O Mundo': 'img/major_arcana_world (Personalizado).png'
 }
 
-# noinspection PyArgumentList
+
 resultado_label = ttk.Label(root, text="", bootstyle=LIGHT)
 resultado_label.pack(pady=10)
 
@@ -85,9 +85,12 @@ def mostra_imagens(cartas, layout=None):
 
 
 def tiragem_composta(numero_cartas):
-    cartas_possiveis = list(arcanosMaiores.keys())
-    cartas_aleatorias = random.sample(cartas_possiveis, numero_cartas)
-    return cartas_aleatorias
+    if len(intencoes) == 0:
+        messagebox.showinfo("Aviso!", "A consulta não pode ser efetuada sem a intenção")
+    else:
+        cartas_possiveis = list(arcanosMaiores.keys())
+        cartas_aleatorias = random.sample(cartas_possiveis, numero_cartas)
+        return cartas_aleatorias
 
 
 def templo():
