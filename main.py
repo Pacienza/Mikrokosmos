@@ -1,5 +1,5 @@
 import tkinter as tk
-from tkinter import Toplevel
+from tkinter import Toplevel, messagebox
 import ttkbootstrap as ttk
 from ttkbootstrap.constants import *
 import random
@@ -9,7 +9,7 @@ root.title("Mikrokosmos - Tarot Digital")
 root.geometry("512x512")
 style = ttk.Style(theme="vapor")
 
-title_label = ttk.Label(root, text="Mikrokosmos - Tarot Digital",font=("Arial", 30))
+title_label = ttk.Label(root, text="Mikrokosmos - Tarot Digital", font=("Arial", 30))
 title_label.pack(pady=10)
 
 footer_label = ttk.Label(root, text="Desenvolvido por Lucas Pacienza. 2024 \nTodos direitos reservados a VL Info®",
@@ -41,14 +41,21 @@ arcanosMaiores = {
     'O Mundo': 'img/major_arcana_world (Personalizado).png'
 }
 
+# noinspection PyArgumentList
 resultado_label = ttk.Label(root, text="", bootstyle=LIGHT)
 resultado_label.pack(pady=10)
 
 intencoes = {}
 
+
 def energisa_sistema():
     user_input = input_field.get()
-    intencoes[user_input] = user_input
+    if len(user_input.strip()) == 0:
+        messagebox.showinfo("Aviso!", "A intenção não pode ser vazia")
+    else:
+        intencoes[user_input] = user_input
+        messagebox.showinfo("Confirmação", "Sistema energizado com a intenção, prossiga para a consulta")
+
 
 input_field = ttk.Entry(root)
 input_field.pack(pady=10)
@@ -104,7 +111,6 @@ def basico():
 def avulso():
     carta_aleatoria = random.choice(list(arcanosMaiores.keys()))
     mostra_imagens([carta_aleatoria])
-
 
 
 b1 = ttk.Button(root, text="Templo de Afrodite", bootstyle=LIGHT, command=templo)
